@@ -36,9 +36,9 @@ public static void main(String[] args) throws Exception
 
 				String [] re=new String[2000];
                 int count=0;
-				try
+				//try
 
-				{
+				//{
 
 					File f = new File(inputPath);
 
@@ -61,16 +61,16 @@ public static void main(String[] args) throws Exception
 				    	count++;
 				    }
 				    in.close();
-				}
+				/*}
 			    catch(Exception e)
 			   {
 					System.out.println("Error in open inputfile");
 				    e.printStackTrace();
-			    }
+			    }*/
 
                      for(int i=0;i<count;i++)
                      {
-                    	    String s=re[i];
+                    	     s=re[i];
 				    	    //System.out.println(s);
 
 				    		int l=s.length()-1;
@@ -238,7 +238,7 @@ public static void main(String[] args) throws Exception
 
 				    		//System.out.println(address);
 
-				    		String province=null,city=null,country=null,town=null,village=null,road=null,num=null;
+				    		String province="",city="",country="",town="",village="",road="",num="";
 
 				    		if(lv.equals("1"))
 
