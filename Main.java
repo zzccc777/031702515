@@ -293,7 +293,7 @@ public static void main(String[] args) throws Exception
 				    				{
 				    					ou.write("[");
 				    				}
-				    				ou.write("\r\n"+"{");
+				    				ou.write("{");
 
 				    				ou.write("\"姓名\":\""+name+"\",");
 
@@ -435,7 +435,7 @@ public static void main(String[] args) throws Exception
 				    				{
 				    					ou.write("[");
 				    				}
-				    				ou.write("\r\n"+"{");
+				    				ou.write("{");
 
 				    				ou.write("\"姓名\":\""+name+"\",");
 
