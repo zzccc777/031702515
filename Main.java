@@ -30,9 +30,9 @@ public static void main(String[] args) throws IOException
 
 				String encoding="UTF-8";*/
 
-				String inputPath = args[0];
+				String inputPath = "input.txt";
 
-				String outputPath = args[1];
+				String outputPath = "031702515.txt";
 
 				String [] re=new String[2000];
                 int count=0;
