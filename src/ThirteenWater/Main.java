@@ -9,13 +9,6 @@ import java.util.Random;
 
 
 
-/**
-
- * @author yjn
-
- * @creatTime 2019/10/15 - 0:42
-
- */
 
 public class Main{
 
