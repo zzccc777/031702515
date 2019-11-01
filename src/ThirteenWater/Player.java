@@ -1,6 +1,5 @@
 package ThirteenWater;
-//黑桃�??$，红桃为&，梅花为*，方块为#
-//铁支就是炸弹，乌龙就是单�??
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -53,22 +52,22 @@ public class Player implements FinalTest
 	   {
 		   if((i+1)<handCard.size()&&handCard.get(i).rank==handCard.get(i+1).rank)
 			   if((i+2)<handCard.size()&&handCard.get(i).rank==handCard.get(i+2).rank)
-				   if((i+3)<handCard.size()&&handCard.get(i).rank==handCard.get(i+3).rank)    //四张相同的牌
+				   if((i+3)<handCard.size()&&handCard.get(i).rank==handCard.get(i+3).rank)    //���詨���
 				   {
 					   arr.ranknum4.addAll(handCard.subList(i,i+4));
 					   i+=3;
 				   }
-				   else                                               //三张相同的牌
+				   else                                               //銝��詨���
 				   {
 					   arr.ranknum3.addAll(handCard.subList(i,i+3));
 					   i+=2;
 				   }
-			   else                                   //两张相同的牌
+			   else                                   //銝文��詨���
 			   {
 				   arr.ranknum2.addAll(handCard.subList(i,i+2));
 				   i+=1;
 			   }
-		   else                                  //没有相同的牌
+		   else                                  //瘝⊥��詨���
 		   {
 			   arr.ranknum1.add(handCard.get(i));
 		   }
@@ -109,7 +108,7 @@ public class Player implements FinalTest
 	   
 	public void change(List<Card> handCard)
 	   {
-		   Collections.sort(handCard,new Comparator<Card>()          //从小到大排序
+		   Collections.sort(handCard,new Comparator<Card>()          //隞��啣之��
 	   {
 		   public int compare(Card c1, Card c2)
 		   {
@@ -119,28 +118,28 @@ public class Player implements FinalTest
 			   return i;
 		   }
 	   });
-		   arrange(handCard);        //将牌整理到arr�??
+		   arrange(handCard);        //撠��渡��軒rr嚙??
 		   
-		   if(arr.typenum4.size()==13||arr.typenum1.size()==13||arr.typenum2.size()==13||arr.typenum3.size()==13)            //至尊青龙
+		   if(arr.typenum4.size()==13||arr.typenum1.size()==13||arr.typenum2.size()==13||arr.typenum3.size()==13)            //�喳���
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="zhizunqinglong";
 			   return;
 		   }
-		   if(arr.ranknum1.size()==13)                                                     //�??条龙
+		   if(arr.ranknum1.size()==13)                                                     //嚙??�⊿�
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="yitiaotong";
 			   return;
 		   }
-		   if(handCard.get(0).rank==10)                                        //十二皇族
+		   if(handCard.get(0).rank==10)                                        //����
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="shierhuangzu";
 			   return;
 		   }
 
-		   List<Card> continuous1=new ArrayList<Card>();                 //三同花顺
+		   List<Card> continuous1=new ArrayList<Card>();                 //銝��梢◇
 		   List<Card> continuous2=new ArrayList<Card>();
 		   int t=-1,f1=-1;
 		   for(int i=0;i<4;i++)
@@ -152,7 +151,7 @@ public class Player implements FinalTest
 			   for(int j=0;type.size()>=5&&j+4<type.size();j++)
 				   if(iscontinuous(type.subList(j, j+5)))
 				   {
-					   continuous1=type.subList(j,j+5);               //�??组同花顺
+					   continuous1=type.subList(j,j+5);               //嚙??蝏��梢◇
 					   t=i;
 					   f1=j;
 				   }
@@ -186,7 +185,7 @@ public class Player implements FinalTest
 				   cards.add(c);
 			   cards.removeAll(continuous1);
 			   cards.removeAll(continuous2);
-			   if((cards.get(0).rank+2)==cards.get(2).rank)                //同花�??
+			   if((cards.get(0).rank+2)==cards.get(2).rank)                //�嚙??
 			   {
 				   if(continuous1.get(0).rank>continuous2.get(0).rank)
 				   {
@@ -211,21 +210,21 @@ public class Player implements FinalTest
 				}
 			}
 		   
-		   if(arr.ranknum4.size()==12)           //三分天下
+		   if(arr.ranknum4.size()==12)           //銝�憭拐�
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="sanfentianxia";
 			   return;
 		   }
 		   
-		   if(handCard.get(0).rank>6)   //全大
+		   if(handCard.get(0).rank>6)   //�典之
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="quanda";
 			   return;
 		   }
 		   
-		   if(handCard.get(12).rank<8)   //全小
+		   if(handCard.get(12).rank<8)   //�典�
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="quanxiao";
@@ -233,28 +232,28 @@ public class Player implements FinalTest
 		   }
 		   
 		   if(arr.typenum1.size()+arr.typenum3.size()==13||
-				   arr.ranknum1.size()+arr.ranknum3.size()==0)   //凑一�??
+				   arr.ranknum1.size()+arr.ranknum3.size()==0)   //��嚙??
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="couyise";
 			   return;
 		   }
 		   
-		   if(arr.ranknum3.size()==12||(arr.ranknum3.size()==9&&arr.ranknum4.size()==4))              //四套三条
+		   if(arr.ranknum3.size()==12||(arr.ranknum3.size()==9&&arr.ranknum4.size()==4))              //��銝
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="sitaosantiao";
 			   return;
 		   }
 		   
-		   if(arr.ranknum2.size()==10&&arr.ranknum3.size()==3)       //五对三条
+		   if(arr.ranknum2.size()==10&&arr.ranknum3.size()==3)       //鈭笆銝
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="wuduisantiao";
 			   return;
 		   }
 		   
-		   if(arr.ranknum2.size()==12||(arr.ranknum2.size()==8&&arr.ranknum4.size()==4))              //六对�??
+		   if(arr.ranknum2.size()==12||(arr.ranknum2.size()==8&&arr.ranknum4.size()==4))              //�剖笆嚙??
 		   {
 			   choice=tochoice(handCard);
 			   choice.headType="liuduiban";
@@ -302,7 +301,7 @@ public class Player implements FinalTest
 				   handCard2.add(c);
 			   handCard2.removeAll(continuous3);
 			   handCard2.removeAll(continuous4);
-			   if(handCard2.get(0).rank+2 == handCard2.get(2).rank)                     //三顺�??
+			   if(handCard2.get(0).rank+2 == handCard2.get(2).rank)                     //銝◇嚙??
 			   {
 				   choice.end=continuous3;
 				   choice.mid=continuous4;
@@ -312,7 +311,7 @@ public class Player implements FinalTest
 			   }
 		   }
 		   
-		   int typen[]=new int[5];              //三同�??
+		   int typen[]=new int[5];              //銝�嚙??
 		   typen[1]=arr.typenum1.size();
 		   typen[2]=arr.typenum2.size();
 		   typen[3]=arr.typenum3.size();
@@ -384,11 +383,11 @@ public class Player implements FinalTest
 			   card.add(c);
 		   if(!continuous1.isEmpty())
 		   {
-			   choice.end=continuous1;                      //尾道为同花顺
+			   choice.end=continuous1;                      //撠暸�銝箏��梢◇
 			   choice.endType="tonghuashun"; 
 			   card.removeAll(continuous1);
 			   arrange(card);
-			   if(!continuous2.isEmpty())                               //中道为同花顺
+			   if(!continuous2.isEmpty())                               //銝剝�銝箏��梢◇
 			   {
 				   if(continuous1.get(4).rank<continuous2.get(4).rank)
 				   {
@@ -412,7 +411,7 @@ public class Player implements FinalTest
 			   {
 				   choice.head.addAll(card.subList(0, 3));
 				   choice.headType="santiao";
-				   choice.mid.addAll(card.subList(3, 8));                //中道为铁支，头道为三�??
+				   choice.mid.addAll(card.subList(3, 8));                //銝剝�銝粹��荔�憭湧�銝箔�嚙??
 				   choice.midType="tiezhi";
 				   return;
 			   }
@@ -424,11 +423,11 @@ public class Player implements FinalTest
 				   if(!arr.ranknum3.isEmpty())
 				   {
 					   choice.head.addAll(arr.ranknum3);
-					   choice.headType="santiao";                     //中道为铁支，头道为三�??
+					   choice.headType="santiao";                     //銝剝�銝粹��荔�憭湧�銝箔�嚙??
 					   card.removeAll(arr.ranknum3);
 					   choice.mid.addAll(card);
 					   choice.midType="tiezhi";
-				   }else if(!arr.ranknum2.isEmpty())                            //中道为铁支，头道为一�??
+				   }else if(!arr.ranknum2.isEmpty())                            //銝剝�銝粹��荔�憭湧�銝箔�嚙??
 				   {
 					   choice.head.addAll(arr.ranknum2.subList(arr.ranknum2.size()-2, arr.ranknum2.size()));
 					   card.removeAll(choice.head);
@@ -438,7 +437,7 @@ public class Player implements FinalTest
 					   choice.midType="tiezhi";
 				   }
 				   else 
-				   {                                                       //中道为铁支，头道为乌�??
+				   {                                                       //銝剝�銝粹��荔�憭湧�銝箔�嚙??
 					   choice.mid.add(card.get(3));
 					   choice.midType="tiezhi";
 					   choice.head.addAll(card.subList(0, 3));
@@ -449,14 +448,14 @@ public class Player implements FinalTest
 			   
 			   if(arr.ranknum3.size()==6)
 			   {
-				                                                                    //中道为葫�??
+				                                                                    //銝剝�銝箄嚙??
 				   if(!arr.ranknum2.isEmpty())
 				   {
 					   choice.mid.addAll(card.subList(3, 6));  
 					   choice.mid.addAll(arr.ranknum2);
 					   card.removeAll(choice.mid);
 					   choice.midType="hulu";
-					   choice.head.addAll(card);                                                               //从这里开始不加类�??
+					   choice.head.addAll(card);                                                               //隞���憪��掩嚙??
 				   }
 				   else
 				   {
@@ -487,7 +486,7 @@ public class Player implements FinalTest
 			   for(int i=0;i<5;i++)
 			   {
 				   List<Card>type=new ArrayList<Card>();
-				   if(typen[i]==5)                                    //中道为同�??
+				   if(typen[i]==5)                                    //銝剝�銝箏�嚙??
 				   {
 					  switch(i)
 					  {
@@ -568,7 +567,7 @@ public class Player implements FinalTest
 				   if(card.get(i-1).rank!=card.get(i).rank)
 					   card1.add(card.get(i));
 			   }
-			   for(int i=0;i<card1.size()-4;i++)                               //中道为顺�??
+			   for(int i=0;i<card1.size()-4;i++)                               //銝剝�銝粹◇嚙??
 				   if(iscontinuous(card1.subList(i, i+5)))
 				   {
 					   choice.mid=card1.subList(i, i+5);
@@ -623,7 +622,7 @@ public class Player implements FinalTest
 		   }
 			
 		   
-		   if(arr.ranknum4.size()==8)                                                       //尾道为铁�??
+		   if(arr.ranknum4.size()==8)                                                       //撠暸�銝粹�嚙??
 		   {
 			   choice.end.addAll(arr.ranknum4.subList(4, 8));
 			   choice.mid.addAll(arr.ranknum4.subList(0, 5));
@@ -676,12 +675,12 @@ public class Player implements FinalTest
 				   return;
 			   }
 		   }
-		   if(arr.ranknum4.size()==4)                  //尾道为铁�??
+		   if(arr.ranknum4.size()==4)                  //撠暸�銝粹�嚙??
 		   {
 			   choice.end.addAll(arr.ranknum4);
 			   card.removeAll(choice.end);
 			   arrange(card);
-			   if(arr.ranknum3.size()==6)              //中道是葫�??
+			   if(arr.ranknum3.size()==6)              //銝剝��航嚙??
 			   {
 				   if(!arr.ranknum2.isEmpty())
 				   {
@@ -845,7 +844,7 @@ public class Player implements FinalTest
 				   if(card.get(i-1).rank!=card.get(i).rank)
 					   card1.add(card.get(i));
 			   }
-			   for(int i=0;i<card1.size()-4;i++)                               //中道为顺�??  //未�?�虑顺子包含对子的情�??
+			   for(int i=0;i<card1.size()-4;i++)                               //銝剝�銝粹◇嚙??  //�迎蕭?嚙質�憿箏��撖孵���嚙??
 				   if(iscontinuous(card1.subList(i, i+5)))
 				   {
 					   choice.mid.clear();
@@ -912,7 +911,7 @@ public class Player implements FinalTest
 			   return;  
 		   }
 		   
-		   if(arr.ranknum3.size()==9)                    //尾道是葫�??
+		   if(arr.ranknum3.size()==9)                    //撠暸��航嚙??
 		   {
 			   if(arr.ranknum2.size()==4)
 			   {
@@ -975,7 +974,7 @@ public class Player implements FinalTest
 				   case 4:type=arr.typenum4;break;
 				   default:
 				   }
-				   if(typen[i]==5)                                    //中道为同�??
+				   if(typen[i]==5)                                    //銝剝�銝箏�嚙??
 				   {
 					   choice.mid.addAll(type);
 					   card.removeAll(choice.mid);
@@ -1030,7 +1029,7 @@ public class Player implements FinalTest
 				   if(card.get(i-1).rank!=card.get(i).rank)
 					   card1.add(card.get(i));
 			   }
-			   for(int i=0;i<card1.size()-4;i++)                               //中道为顺�??
+			   for(int i=0;i<card1.size()-4;i++)                               //銝剝�銝粹◇嚙??
 				   if(iscontinuous(card1.subList(i, i+5)))
 					   choice.mid=card1.subList(i, i+5);
 			   if(!choice.mid.isEmpty())
@@ -1134,7 +1133,7 @@ public class Player implements FinalTest
 				   choice.end.addAll(type1);
 			   if(type1.size()>5)
 			   {
-				  if(!arr.ranknum3.isEmpty())  //只可能有�??个三条，不可能出现两�??
+				  if(!arr.ranknum3.isEmpty())  //�芸�賣�嚙??銝芯��∴�銝�賢�唬舅嚙??
 				  {
 					  type1.removeAll(arr.ranknum3);
 					  choice.end.addAll(type1.subList(0, 4));
@@ -1161,7 +1160,7 @@ public class Player implements FinalTest
 				   if(card.get(i).rank!=card.get(i-1).rank)
 					   card2.add(card.get(i));
 			   }
-			   for(int i=0;i<card2.size()-4;i++)                               //中道为顺�??  //未�?�虑顺子包含对子的情�??
+			   for(int i=0;i<card2.size()-4;i++)                               //銝剝�銝粹◇嚙??  //�迎蕭?嚙質�憿箏��撖孵���嚙??
 				   if(iscontinuous(card2.subList(i, i+5)))
 					   choice.mid=card2.subList(i, i+5);
 			   if(!choice.mid.isEmpty())
@@ -1278,7 +1277,7 @@ public class Player implements FinalTest
 			   return;
 		   }
 		   
-		   if(!arr.ranknum3.isEmpty())                          //尾道为三�??
+		   if(!arr.ranknum3.isEmpty())                          //撠暸�銝箔�嚙??
 		   {
 			   choice.end.addAll(arr.ranknum3.subList(arr.ranknum3.size()-3, arr.ranknum3.size()));
 			   choice.end.addAll(arr.ranknum1.subList(0, 2));
